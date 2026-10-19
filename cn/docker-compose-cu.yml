@@ -1,0 +1,30 @@
+services:
+  oai-cu-node2:
+    image: oaisoftwarealliance/oai-gnb:2024.w26
+    privileged: true
+    container_name: oai-cu-node2
+    network_mode: host
+    environment:
+      USE_ADDITIONAL_OPTIONS: --sa --log_config.global_log_options level,nocolor,time
+    volumes:
+      - ./conf/cu.node2.conf:/opt/oai-gnb/etc/gnb.conf
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-softmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  oai-cu-node3:
+    image: oaisoftwarealliance/oai-gnb:2024.w26
+    privileged: true
+    container_name: oai-cu-node3
+    network_mode: host
+    environment:
+      USE_ADDITIONAL_OPTIONS: --sa --log_config.global_log_options level,nocolor,time
+    volumes:
+      - ./conf/cu.node3.conf:/opt/oai-gnb/etc/gnb.conf
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-softmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 10

@@ -1,0 +1,55 @@
+# BRAVE-O Configuration
+# All hyperparameters centralised here.
+# Override via CLI: python train.py --config configs/default.yaml
+
+# ── Environment ──────────────────────────────────────────────────────────────
+env:
+  num_rus:            4        # number of RUs / Base Stations
+  num_nodes:          4        # number of O-Cloud server VMs
+  dt:                 60       # seconds per time step (1 min)
+  util_threshold:     0.85     # SLA load limit per node
+  node_capacity_mbps: 1000.0   # link capacity per node (Mbps)
+  node_capacity_gops: 100.0    # compute capacity per node (GOPS)
+  alpha_du:           0.6      # GOPS per Mbps for DU
+  alpha_cu:           0.3      # GOPS per Mbps for CU
+  eps_c:              0.0001   # kWh / GOPS (energy per compute unit)
+  eps_base:           0.10     # kWh (baseline power per active node)
+
+# ── Reward weights ────────────────────────────────────────────────────────────
+reward:
+  sla_penalty:        10.0
+  migration_cost:     0.05
+
+# ── MA-DQN Training ───────────────────────────────────────────────────────────
+training:
+  n_episodes:         10000
+  max_steps:          1440     # 1 day at 1-min resolution
+  batch_size:         64
+  replay_capacity:    50000
+  target_sync:        200      # hard sync every N global steps
+  eps_start:          1.0
+  eps_end:            0.01
+  eps_decay:          0.9995
+  lr:                 0.001
+  gamma:              0.99
+  hidden:             128
+  seed:               42
+  device:             cpu
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+logging:
+  log_every:          10
+  save_every:         500
+  results_dir:        results
+
+# ── SLICES-RI Platform ────────────────────────────────────────────────────────
+platform:
+  ssh_key:            ~/.ssh/id_ed25519
+  bastion:            bastion2.slices-be.eu
+  settle_time:        2        # seconds to wait after stress-ng spawn
+  ssh_timeout:        8
+  vm_ips:
+    0: "10.10.213.71"   # vm-server-1
+    1: "10.10.215.137"  # vm-server-2
+    2: "10.10.208.138"  # vm-server-3
+    3: "10.10.211.119"  # vm-server-4

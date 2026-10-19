@@ -1,0 +1,46 @@
+# Font settings for labels and ticks
+font.size: 12           # Default font size
+font.family: serif       # Use serif font for academic papers
+font.serif: Times New Roman, Times, DejaVu Serif, serif  # Preferred serif fonts
+
+# Line and marker settings
+lines.linewidth: 1.5     # Line width to make plots clear
+lines.markersize: 8      # Marker size to make data points visible
+lines.markeredgewidth: 1 # Edge width for markers
+
+# Grid settings
+axes.grid: True          # Enable grid
+grid.linestyle: --       # Dotted grid lines
+grid.linewidth: 0.5      # Thin grid lines
+grid.alpha: 0.7          # Slight transparency for grid lines
+
+# Axes settings
+axes.labelsize: 18       # Font size for axis labels
+axes.titlesize: 18       # Font size for plot title
+axes.titleweight: bold   # Bold title for emphasis
+axes.linewidth: 0.5        # Axis line width
+
+# Ticks settings
+xtick.major.size: 5      # Size of major ticks
+xtick.minor.size: 3      # Size of minor ticks
+ytick.major.size: 5      # Size of major ticks
+ytick.minor.size: 3      # Size of minor ticks
+xtick.direction: in      # Tick direction (inward)
+ytick.direction: in      # Tick direction (inward)
+xtick.labelsize: 15      # Font size for x-tick labels
+ytick.labelsize: 15      # Font size for y-tick labels
+
+# Legend settings
+legend.fontsize: 12     # Font size for legend
+legend.frameon: True    # No frame around the legend
+legend.loc: best         # Automatic position for the best fit
+
+# Figure size settings
+figure.figsize: 7,5  #6, 4   # Standard figure size (in inches) for papers
+figure.dpi: 300          # High resolution for academic figures
+
+# Color scheme (optional, remove if default colors are preferred)
+axes.prop_cycle: cycler('color', ['1f77b4', 'ff7f0e', '2ca02c', '9467bd', '3772ff', 'cc3f0c', 'ff99ba', '662c91', 'ffb400', '157f1f', '3653ab', '392f04', 'ed4672', 'ff7c15', 'a5be00'])
+#axes.prop_cycle: cycler('color', ['3772ff', 'cc3f0c', 'ff99ba', '662c91', 'ffb400', '157f1f', '3653ab', '392f04', 'ed4672', 'ff7c15', 'a5be00'])
+
+#text.usetex: True

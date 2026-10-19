@@ -1,0 +1,158 @@
+services:
+
+  oai-nr-ue:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000101 -C 3319680000 --rfsimulator.serveraddr 10.10.212.103 --rfsimulator.serverport 4043 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue1.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.150
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  oai-nr-ue2:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue2
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000102 -C 3319680000 --rfsimulator.serveraddr 10.10.212.103 --rfsimulator.serverport 4043 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue2.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.151
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  oai-nr-ue3:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue3
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000103 -C 3319680000 --rfsimulator.serveraddr 10.10.212.103 --rfsimulator.serverport 4043 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue3.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.152
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  oai-nr-ue4:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue4
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000104 -C 3319680000 --rfsimulator.serveraddr 10.10.212.103 --rfsimulator.serverport 4043 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue4.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.153
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  oai-nr-ue5:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue5
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000105 -C 3319680000 --rfsimulator.serveraddr 10.10.212.33 --rfsimulator.serverport 4044 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue5.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.154
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  oai-nr-ue6:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue6
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000106 -C 3319680000 --rfsimulator.serveraddr 10.10.212.33 --rfsimulator.serverport 4044 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue6.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.155
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  oai-nr-ue7:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue7
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000107 -C 3319680000 --rfsimulator.serveraddr 10.10.212.33 --rfsimulator.serverport 4044 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue7.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.156
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  oai-nr-ue8:
+    image: oaisoftwarealliance/oai-nr-ue:2024.w26
+    privileged: true
+    container_name: oai-nr-ue8
+    cap_add:
+      - NET_ADMIN
+    environment:
+      USE_ADDITIONAL_OPTIONS: "-E --sa --rfsim -r 106 --numerology 1 --uicc0.imsi 001010000000108 -C 3319680000 --rfsimulator.serveraddr 10.10.212.33 --rfsimulator.serverport 4044 --log_config.global_log_options level,nocolor,time"
+    volumes:
+      - ./conf/ue8.conf:/opt/oai-nr-ue/etc/nr-ue.conf
+    networks:
+      public_net:
+        ipv4_address: 192.168.70.157
+    healthcheck:
+      test: /bin/bash -c "pgrep nr-uesoftmodem"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  public_net:
+    external: true
+    name: oai_e_matro
