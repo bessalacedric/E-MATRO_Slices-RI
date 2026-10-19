@@ -15,21 +15,21 @@ The setup deploys an OpenAirInterface (OAI) 5G core and a disaggregated RAN (2 C
 
 | Item | Value |
 |---|---|
-| **Algorithm** | E-MATRO++: energy-aware scheduling of O-RAN VNF workloads, trained with centralized training and decentralized execution (CTDE) |
+| **Algorithms** | E-MATRO++, DQN, IDQN, Spit-All, Group-All, and Random |
 | **Program** | Python (PyTorch, Gymnasium, ZeroMQ) controller; OAI 5G core, RAN and UEs in Docker |
 | **Compilation** | None. Python dependencies are installed with pip, and OAI is used as prebuilt Docker images |
 | **RAN software** | `oaisoftwarealliance/oai-gnb:2024.w26` and `oaisoftwarealliance/oai-nr-cuup:2024.w26` |
 | **Run-time environment** | Ubuntu 24.04.1, Python 3, Docker (installed by the steps below) |
 | **Hardware** | SLICES-RI virtual machines: 1 × `large` (controller) and 15 × `medium` (servers) |
 | **Execution** | Bash commands run from the controller VM over SSH |
-| **Metrics** | _TODO: e.g. total energy consumption, number of active hosts, VNF migration count, training reward_ |
-| **Output** | Infrastructure metrics in `results/metrics/`; training log in `results/8rus_6nodes/training_log.csv` |
+| **Metrics** |  total energy consumption, number of active hosts, VNF migration count, training reward, inference latency |
+| **Output** | Infrastructure metrics in `results/metrics/`; training log in `results/` |
 | **Experiments** | _TODO: list one item per figure or table reproduced_ |
-| **Disk space required** | _TODO_ |
+| **Disk space required** |  |
 | **Workflow preparation time** | About 1–2 hours (VM creation, dependency installation, image pulls, deployment) |
-| **Experiment duration** | _TODO: duration of a 10,000-episode training run_ |
+| **Experiment duration** | adaptable duration of a episode training run_ |
 | **Publicly available** | Yes |
-| **Code license** | _TODO: e.g. Apache-2.0_ |
+| **Code license** |  Apache-2.0_ |
 | **Archived (DOI)** | _TODO: Zenodo DOI after the first release_ |
 
 ## A.3 Description
