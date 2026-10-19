@@ -1,5 +1,5 @@
 """
-topology.py — E-MATRO Deployment Topology Configuration
+topology.py — E-MATRO++ Deployment Topology Configuration
 ========================================================
 Single source of truth for all deployment parameters.
 Change N_RUS here to scale the entire system.

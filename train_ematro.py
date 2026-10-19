@@ -1,5 +1,5 @@
 """
-train.py — MA-DQN Training Loop for E-MATRO
+train.py — Training Loop for E-MATRO++
 ============================================
 Matches new ocloud_env.py:
   - Actions: IDLE / SLEEP / ACCEPT / WAKE per node
@@ -38,10 +38,7 @@ import numpy as np
 import torch
 import time
 
-#env.
-# Topology is overridden at runtime via --n-rus before importing env_ocloud
-# The actual override happens in train() but we need to pre-apply it here
-# if --n-rus is passed as sys.argv so module-level constants are correct
+
 import sys as _sys
 _nrus_override = None
 for _i, _a in enumerate(_sys.argv):
@@ -294,7 +291,7 @@ def train(cfg: dict):
     n_nodes = N_NODES                           
 
     print(f"{'='*60}")
-    print(f"  E-MATRO MA-DQN Training")
+    print(f"  E-MATRO++ Training")
     print(f"  Mode    : {'REAL TRAFFIC' if cfg['use_real'] else 'SYNTHETIC'}")
     print(f"  Episodes: {cfg['n_episodes']}")
     print(f"  Steps/ep: {cfg['max_steps']}")
@@ -657,7 +654,7 @@ def train(cfg: dict):
 # =============================================================================
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="E-MATRO MA-DQN Training")
+    parser = argparse.ArgumentParser(description="E-MATRO++ Training")
 
     parser.add_argument("--n-rus",         type=int, default=None, help="Override N_RUS (e.g. 4, 8, 12)")
     parser.add_argument("--real",          action="store_true", help="Use real traffic from SLICES-RI testbed")

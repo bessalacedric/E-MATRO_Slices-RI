@@ -12,7 +12,7 @@ Expected result: converges but slower and to a worse policy due to:
   4. Scalability bottleneck: adding a node multiplies action space by 4
 
 Architecture difference:
-  E-MATRO MA-DQN:   N_NODES agents × (obs_dim → 4 Q-values)
+  E-MATRO++ MA-DQN:   N_NODES agents × (obs_dim → 4 Q-values)
   Centralized DQN:  1 agent × (obs_dim → 4^N_NODES Q-values)
 
 For N_NODES=4: joint action space = 4^4 = 256 actions
@@ -590,7 +590,7 @@ def train(cfg: dict):
 # =============================================================================
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Centralized single-agent DQN baseline for E-MATRO comparison")
+    parser = argparse.ArgumentParser(description="Centralized single-agent DQN baseline for E-MATRO++ comparison")
     
     parser.add_argument("--n-rus", type=int, default=None)
     parser.add_argument("--real",          action="store_true")

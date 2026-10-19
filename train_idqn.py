@@ -1,10 +1,10 @@
 """
-train_idqn.py — Independent Deep-Q Networks (No-CTDE) Baseline
+train_idqn.py — Independent Deep-Q Networks Baseline
 ===========================================================
 Naive multi-agent baseline: N_NODES independent DQN agents, each trying
 to solve the GLOBAL objective on its own, with NO coordination mechanism:
 
-  - No XApp guidance vector (no centralized coordination signal)
+  - No xApp guidance vector (no centralized coordination signal)
   - No shared/centralized training context
   - Each agent observes the same global state and acts independently
   - Each agent receives the SAME global reward (credit assignment is implicit/naive — every agent is blamed/rewarded for the joint outcome
@@ -16,8 +16,8 @@ policies, which is known to suffer from:
   2. High conflict rate: agents propose SLEEP/migrations without knowing whether a partner agent will accept — no orchestration
   3. Poor scalability: conflict probability grows with N_NODES since coordination is purely accidental
 
-Architecture (same network class as E-MATRO for fair comparison):
-  E-MATRO MA-DQN (CTDE):  DAppDQN(obs + XApp guidance) → factorized heads
+Architecture (same network class as E-MATRO++ for fair comparison):
+  E-MATRO MA-DQN:  DAppDQN(obs + xApp guidance) → factorized heads
   IDQN (this file):        DAppDQN(obs + zero-guidance)  → factorized heads (guidance vector always zero — no coordination)
 
 Output: results/idqn_log.csv 
@@ -152,9 +152,9 @@ def train(cfg: dict):
     print(f"{'='*60}\n")
 
     # ── Agents — N_NODES INDEPENDENT learners, no shared coordination ──────
-    # Same network class as E-MATRO (DAppDQN via MADQNAgent) for architectural
+    # Same network class as E-MATRO++ (DAppDQN via MADQNAgent) for architectural
     # fairness — the only difference is the guidance input is always zero,
-    # i.e. there is no XApp / no centralized training signal.
+    # i.e. there is no xApp.
     agents = [
         MADQNAgent(
             agent_id = n,
@@ -169,7 +169,7 @@ def train(cfg: dict):
         for n in range(n_nodes)
     ]
     # Each agent gets its OWN independent replay buffer — no shared
-    # centralized replay, reinforcing the "no CTDE" property.
+    # centralized replay.
     replays = [ReplayBuffer(cfg["replay_capacity"]) for _ in range(n_nodes)]
 
     logger = CSVLogger(os.path.join(cfg["results_dir"], "idqn_training_log_8rus_6nodes_10000_episodes.csv"))
@@ -438,7 +438,7 @@ def train(cfg: dict):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Independent Deep-Q Networks  baseline for E-MATRO comparison"
+        description="Independent Deep-Q Networks  baseline for E-MATRO++ comparison"
     )
     parser.add_argument("--n-rus",         type=int, default=None,  help="Override N_RUS (e.g. 4, 8, 12)")
     parser.add_argument("--real",          action="store_true")
