@@ -76,10 +76,6 @@ def fig1_reward_curve(df_e_matro, df_dqn, df_idqn,  save_dir):
     
 
     ax.legend()
-    # handles, labels = ax.get_legend_handles_labels()
-    # fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(0.5, 1.04), ncol=3, fontsize='x-small',
-    #  columnspacing=0.8, handlelength=1.2)
-    # fig.subplots_adjust(top=0.85)
     fig.tight_layout()
     path = os.path.join(save_dir, "reward_curve.png")
     fig.savefig(path, bbox_inches='tight', pad_inches=0.15, dpi=300)
@@ -1306,13 +1302,7 @@ def fig_sensitivity_analysis_learning_rate(save_dir):
     ax3.set_ylabel("Average migrations number", fontsize=11)
     ax3.grid(True, alpha=0.3)
 
-    # handles, labels = ax1.get_legend_handles_labels()
-
-
-    # fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(0.5, 1.04), ncol=3, fontsize='x-small',
-    #  columnspacing=0.8, handlelength=1.2)
-    # fig.subplots_adjust(top=0.85)
-
+    
     offsets = [-0.04, 0.0, 0.04]  # shift left / none / right in figure fraction
     for (ax, cap), offset in zip(captions.items(), offsets):
         xlabel_bb = ax.xaxis.label.get_window_extent()
@@ -1523,7 +1513,7 @@ def main():
     
     # Training logs
     e_matro_csv = os.path.join(args.results_dir, "e-matro_training_log_4rus_4nodes_10000_episodes.csv")
-    dqn_csv   = os.path.join(args.results_dir, "ctde_training_log_4rus_4nodes_10000_episodes.csv")
+    dqn_csv   = os.path.join(args.results_dir, "dqn_training_log_4rus_4nodes_10000_episodes.csv")
     idqn_csv   = os.path.join(args.results_dir, "idqn_training_log_4rus_4nodes_10000_episodes.csv")
 
     random_csv = os.path.join(args.results_dir, "random_training_log_4rus_4nodes_10000_episodes.csv")
@@ -1582,8 +1572,8 @@ def main():
 
 
     # Generate figure
-    fig1_reward_curve(df_e_matro_csv, df_dqn, df_idqn,  figures_dir)#df_random, df_group_all, df_split_all,
-    fig_cdf_reward(df_e_matro_csv, df_dqn, df_idqn,  figures_dir) # df_random, df_group_all, df_split_all,
+    fig1_reward_curve(df_e_matro_csv, df_dqn, df_idqn,  figures_dir)
+    fig_cdf_reward(df_e_matro_csv, df_dqn, df_idqn,  figures_dir) 
     fig_ccdf_reward(df_e_matro_csv, df_dqn, df_idqn,  figures_dir)
     fig2_energy_curve(df_e_matro_csv, df_dqn, df_idqn, df_random, df_group_all, df_split_all, figures_dir)
     fig3_migrations_curve(df_e_matro_csv, df_dqn, df_idqn, df_random, df_group_all, df_split_all, figures_dir)

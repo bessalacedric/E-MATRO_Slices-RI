@@ -1,5 +1,5 @@
 """
-env_ocloud.py — E-MATRO MA-DQN Environment with Real Traffic Collection
+env_ocloud.py — E-MATRO++ Environment with Real Traffic Collection
 ===========================================
 State variables (paper formulation):
   w_ri_DU[r, i] ∈ {0,1}  — RU r's DU is placed on node i
@@ -8,10 +8,6 @@ State variables (paper formulation):
 
 Deployment: SLICES-RI — 4 O-Cloud nodes, 4 RUs, 1 UE per RU
 
-Consolidation target (energy saving):
-  4 nodes (0%)  → baseline
-  2 nodes (50%) → DUs consolidated on node0, CUs on node0
-  1 node  (75%) → ALL VNFs on node0  (CU load ≈ 0, safe)
 """
 
 import subprocess
@@ -106,7 +102,7 @@ RHO_DELAY      = 1.0 - D_BASE_MS / D_MAX_MS   # = 0.80
 W_DELAY        = 0.5    # penalty weight for delay violation in reward
 
 
-# RU type load coefficients (GOPS per Mbps, from paper)
+# RU type load coefficients (GOPS per Mbps)
 ALPHA_DU   = 0.6
 ALPHA_CU   = 0.1
 

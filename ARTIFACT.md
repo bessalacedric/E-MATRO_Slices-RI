@@ -550,15 +550,15 @@ METRICS_PID=$!
 Train E-MATRO++:
 
 ```bash
-python3 train_ctde.py \
+python3 train_ematro.py \
     --episodes 10000 --max-steps 10 --n-rus 8 \
-    --results-dir results/8rus_6nodes
+    --results-dir results/
 ```
 
 Follow training progress from another terminal or `tmux` window:
 
 ```bash
-tail -f "$REPO"/results/8rus_6nodes/training_log.csv
+tail -f "$REPO"/results/.../training_log.csv
 ```
 
 When training finishes, stop the metrics collection:
@@ -570,7 +570,7 @@ kill "$METRICS_PID"
 **Outputs:**
 
 - `results/metrics/`: infrastructure metrics collected during the run
-- `results/8rus_6nodes/training_log.csv`: per-episode training log
+- `results/.../training_log.csv`: per-episode training log
 
 _TODO: list the scripts that turn these outputs into the paper's figures and tables._
 
@@ -582,7 +582,7 @@ _TODO: reference values for each experiment (tables or figures from the paper), 
 
 - **Number of servers:** change the loop bound in [A.4.3](#a43-create-the-vms) and the number of lines in `hosts.txt`.
 - **Number of gNBs:** change `N_GNB` in `topology.py`, regenerate the configuration ([A.5.6](#a56-generate-the-ran-configuration)) and pass the same value to `collect_metrics.sh --n-gnb`.
-- **Training run:** `train_ctde.py` takes `--episodes`, `--max-steps`, `--n-rus` and `--results-dir`. Use a different `--results-dir` for each configuration so runs don't overwrite each other.
+- **Training run:** `train_ematro.py` takes `--episodes`, `--max-steps`, `--n-rus` and `--results-dir`. Use a different `--results-dir` for each configuration so runs don't overwrite each other.
 - **Reservation length:** change `--duration`, or extend a running reservation with `slices bi extend`.
 - **RAN layout:** edit the `cu.node*.conf` and `du.node*.conf` files and the Compose files in `$REPO/cn/`.
 
